@@ -1,0 +1,1 @@
+export const categories = ['Desayunos', 'Platos principales', 'Entrantes', 'Postres', 'Bebidas']
