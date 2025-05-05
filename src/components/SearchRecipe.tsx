@@ -6,7 +6,7 @@ const SearchRecipe = () => {
 
   const [search, setSearch] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
-  const {searching, selectCategory} = useSearch({search, setSearch, selectedCategory, setSelectedCategory})
+  const {searching} = useSearch({search, setSearch, selectedCategory, setSelectedCategory})
   return (
     <div className='max-w-4xl mx-auto mt-10 pb-5 flex gap-5'>
       <input type='text' placeholder='Buscar por ingrediente' value={search} onChange={searching} className='w-full border border-solid p-1 rounded'/>

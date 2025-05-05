@@ -13,9 +13,7 @@ export const useSearch = ({setSearch, search, selectedCategory}: SearchProps) =>
 
   const {setData} = useRecipes()
 
-  const searching = useCallback<React.ChangeEventHandler<HTMLInputElement>>((e) => {
-    setSearch(e.target.value)
-  }, [search])
+  const searching = useCallback<React.ChangeEventHandler<HTMLInputElement>>((e) => setSearch(e.target.value), [search])
 
   useEffect(() => {
     if (!selectedCategory || selectedCategory === 'Todos') {

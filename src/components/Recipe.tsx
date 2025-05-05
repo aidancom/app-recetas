@@ -1,5 +1,7 @@
 import { RecipesType } from '../types'
 import { useRecipes } from '../hooks/useRecipes'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 type RecipeProps = {
   dataFiltered: RecipesType
@@ -16,6 +18,9 @@ const Recipe = ({dataFiltered}: RecipeProps) => {
         </div>
         <div className='space-y-5'>
           <p className='font-bold text-4xl'>{dataFiltered.name}</p>
+          <div>
+            {Array.from({length: dataFiltered.difficult}).map(() => <FontAwesomeIcon className='text-[#A11F1F]' icon={faStar}/>)}
+          </div>
           <p>{dataFiltered.desc}</p>
           <div>
             <p><span className='font-bold'>Categoría:</span> {dataFiltered.category}</p>
