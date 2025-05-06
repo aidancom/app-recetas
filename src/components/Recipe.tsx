@@ -2,6 +2,7 @@ import { RecipesType } from '../types'
 import { useRecipes } from '../hooks/useRecipes'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { motion } from 'framer-motion'
 
 type RecipeProps = {
   dataFiltered: RecipesType
@@ -10,8 +11,8 @@ type RecipeProps = {
 const Recipe = ({dataFiltered}: RecipeProps) => {
   const {setRecipeWindow} = useRecipes()
   return (
-    <div className='max-w-[1800px] mx-auto py-5 space-y-5 px-7'>
-      <button onClick={() => setRecipeWindow(false)} className='bg-[#A11F1F] uppercase text-white font-medium px-5 py-2 rounded m-3 cursor-pointer'>Volver</button>
+    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0.5}} className='max-w-[1800px] mx-auto py-5 space-y-5 px-7'>
+      <button onClick={() => setRecipeWindow(false)} className='bg-[#A11F1F] hover:bg-[#5f1515] transition uppercase text-white font-medium px-5 py-2 rounded m-3 cursor-pointer'>Volver</button>
       <div className='pt-10 grid w-full xl:grid-cols-2 gap-20'>
         <div>
           <img className='w-full h-[450px] object-cover' src={`../src/assets/img/${dataFiltered.image}.jpg`} alt="" />
@@ -40,7 +41,7 @@ const Recipe = ({dataFiltered}: RecipeProps) => {
         <p className='text-2xl font-bold'>Instrucciones</p>
         <p>{dataFiltered.preparation}</p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

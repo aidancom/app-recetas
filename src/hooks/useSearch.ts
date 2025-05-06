@@ -11,17 +11,22 @@ type SearchProps = {
 
 export const useSearch = ({setSearch, search, selectedCategory}: SearchProps) => {
 
-  const {setData} = useRecipes()
+  const {setData, setLoading, loading} = useRecipes()
 
   const searching = useCallback<React.ChangeEventHandler<HTMLInputElement>>((e) => setSearch(e.target.value), [search])
 
   useEffect(() => {
-    if (!selectedCategory || selectedCategory === 'Todos') {
-      setData(recipesDB);
-    } else {
-      const filtered = recipesDB.filter(recipe => recipe.category === selectedCategory)
-      setData(filtered);
-    }
+    setLoading(true)
+    setTimeout(() => {
+      if (!selectedCategory || selectedCategory === 'Todos') {
+        setData(recipesDB);
+      } else {
+        const filtered = recipesDB.filter(recipe => recipe.category === selectedCategory)
+        setData(filtered);
+      }
+      setLoading(false)
+    }, 1000)
+
   }, [selectedCategory])
 
   useEffect(() => {
@@ -37,7 +42,9 @@ export const useSearch = ({setSearch, search, selectedCategory}: SearchProps) =>
     }
   }, [search]);
 
-
+  useEffect(() => {
+    document.body.style.overflow = loading ? 'hidden' : 'auto'
+  }, [loading])
 
   return {
     searching

@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion"
 import Header from "./components/Header"
 import Recipe from "./components/Recipe"
 import { recipesDB } from "./db/recipes"
@@ -13,15 +14,19 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, [dataFiltered])
+  }, [recipeWindow])
 
   return (
     <>
       <Header/>
       {!recipeWindow ? (
-        <Panel/>
+       <AnimatePresence mode="wait">
+         <Panel key={"recipes"}/>
+       </AnimatePresence>
       ) : (
-        <Recipe dataFiltered={dataFiltered}/>
+        <AnimatePresence mode="wait">
+          <Recipe key={"recipe"} dataFiltered={dataFiltered}/>
+        </AnimatePresence>
       )}
     </>
   )
