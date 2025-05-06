@@ -15,7 +15,7 @@ const Recipe = ({dataFiltered}: RecipeProps) => {
       <button onClick={() => setRecipeWindow(false)} className='bg-[#A11F1F] hover:bg-[#5f1515] transition uppercase text-white font-medium px-5 py-2 rounded m-3 cursor-pointer'>Volver</button>
       <div className='pt-10 grid w-full xl:grid-cols-2 gap-20'>
         <div>
-          <img className='w-full h-[450px] object-cover' src={`/public/img/${dataFiltered.image}.jpg`} alt="" />
+          <img className='w-full h-[450px] object-cover' src={`/img/${dataFiltered.image}.jpg`} alt="" />
         </div>
         <div className='space-y-5'>
           <p className='font-bold text-4xl'>{dataFiltered.name}</p>
