@@ -11,7 +11,7 @@ type SearchProps = {
 
 export const useSearch = ({setSearch, search, selectedCategory}: SearchProps) => {
 
-  const {setData, setLoading, loading} = useRecipes()
+  const {setData, setLoading} = useRecipes()
 
   const searching = useCallback<React.ChangeEventHandler<HTMLInputElement>>((e) => setSearch(e.target.value), [search])
 
@@ -41,10 +41,6 @@ export const useSearch = ({setSearch, search, selectedCategory}: SearchProps) =>
       setData(filtered);
     }
   }, [search]);
-
-  useEffect(() => {
-    document.body.style.overflow = loading ? 'hidden' : 'auto'
-  }, [loading])
 
   return {
     searching
