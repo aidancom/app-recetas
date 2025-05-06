@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useSearch } from '../hooks/useSearch'
 import { categories } from '../db/categories'
 
