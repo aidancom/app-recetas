@@ -24,7 +24,7 @@ const Recipes = () => {
           ) : (
           data.map(recipe => (
             <div key={recipe.id} className='shadow my-5 h-full w-[100%] xl:w-[23%] sm:w-[46%]'>
-              <img src={`../src/assets/img/${recipe.image}.jpg`} alt="" className='h-[350px] w-[400px] object-cover' />
+              <img src={`/public/img/${recipe.image}.jpg`} alt="" className='h-[350px] w-[400px] object-cover' />
               <p className='p-3 font-bold text-[22px]'>{recipe.name}</p>
               <div className='pl-3'>
                 {Array.from({length: recipe.difficult}).map(() => (
